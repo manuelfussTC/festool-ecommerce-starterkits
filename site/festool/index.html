@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Präsentation, Starter-Kits und Aufgaben für den Festool KI-Hackathon am 15. September 2026 mit Manuel Fuß.">
+  <meta name="theme-color" content="#203c2e">
+  <title>Festool KI-Hackathon · Unterlagen & Starter-Kits</title>
+  <link rel="canonical" href="https://manuel-fuss.de/festool/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="page.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#materialien">Zu den Downloads</a>
+  <div class="page">
+    <header>
+      <div class="masthead"><img src="festool-logo.svg" width="233" height="30" alt="Festool"><span>Workshop mit Manuel Fuß</span></div>
+      <p class="eyebrow">15. September 2026 · Wendlingen</p>
+      <h1>Eure Unterlagen für den KI-Hackathon</h1>
+      <p class="intro">Präsentation mitnehmen, eine Vorlage auswählen und selbst weiterbauen.</p>
+    </header>
+
+    <main id="materialien">
+      <section class="presentation" aria-labelledby="praesentation">
+        <div><p class="eyebrow">Zum Nachlesen</p><h2 id="praesentation">Die Präsentation</h2><p>25 Folien mit den Grundlagen, Beispielen und Aufgaben.</p></div>
+        <div class="actions"><a class="button" href="downloads/festool-hackathon-praesentation.pdf" target="_blank" rel="noopener">Präsentation öffnen <span>PDF</span></a><a class="text-link" href="downloads/festool-hackathon-praesentation.pdf" download>PDF herunterladen</a></div>
+      </section>
+
+      <section class="kits" aria-labelledby="starter">
+        <div class="section-head"><h2 id="starter">Eine Vorlage zum Bauen</h2><a href="#start">So startet ihr</a></div>
+        <p>Jedes ZIP enthält ein startbares Gerüst, Beispieldaten und den fertigen Auftrag für Claude Code. Die Fachfunktion baut ihr selbst. Alle Tools laufen eigenständig ohne Verbindung zu euren Firmensystemen.</p>
+        <div class="kit-row"><div><p class="small-label">Einfachster Einstieg</p><h3>Produktdaten-Check</h3><p>Eine Produktliste auf fehlende Pflichtangaben und doppelte Artikelnummern prüfen. Die Fehlerliste als CSV mitnehmen.</p></div><a class="button secondary" href="downloads/produktdaten-check.zip" download aria-label="Produktdaten-Check als ZIP herunterladen">ZIP herunterladen</a></div>
+        <div class="kit-row"><div><h3>Produktvergleich</h3><p>Zwei oder drei Produkte auswählen, Unterschiede nebeneinander anzeigen und den Vergleich exportieren.</p></div><a class="button secondary" href="downloads/produktvergleich.zip" download aria-label="Produktvergleich als ZIP herunterladen">ZIP herunterladen</a></div>
+        <div class="kit-row"><div><h3>Shop-Reporting</h3><p>In einer CSV Produkte mit vielen Besuchen und wenigen Bestellungen finden. Kennzahlen filtern und Ergebnisse exportieren.</p></div><a class="button secondary" href="downloads/shop-reporting.zip" download aria-label="Shop-Reporting als ZIP herunterladen">ZIP herunterladen</a></div>
+        <div class="kit-row"><div><p class="small-label">Für die gemeinsame Spielrunde</p><h3>Spielstart</h3><p>Mit Claude ein kleines Spiel „Schraubenfang“ bauen. Ein vorbereitetes React-Projekt und verständliche Spielregeln helfen beim Einstieg.</p></div><a class="button secondary" href="downloads/spielstart.zip" download aria-label="Spielstart als ZIP herunterladen">ZIP herunterladen</a></div>
+        <p class="note">Alle mitgelieferten Produktdaten und Kennzahlen sind erfunden. Für den Download braucht ihr kein GitHub-Konto.</p>
+      </section>
+
+      <section id="start" class="start" aria-labelledby="start-heading">
+        <p class="eyebrow">Vom Download zur eigenen Anwendung</p><h2 id="start-heading">So startet ihr mit Claude</h2>
+        <ol class="steps">
+          <li><strong>Ein ZIP vollständig entpacken.</strong><span>Öffnet den enthaltenen Projektordner. Darin liegen unter anderem README.md und package.json.</span></li>
+          <li><strong>Claude Code in diesem Ordner starten.</strong><span>Wenn ihr das Terminal nutzt, lautet der Befehl <code>claude</code>. Die eingerichtete Entwicklungsumgebung verwenden.</span></li>
+          <li><strong>Diesen Auftrag in Claude einfügen.</strong><span>Er gehört in das Gespräch mit Claude, nicht als Befehl ins normale Terminal.</span></li>
+        </ol>
+        <div class="prompt-box"><div class="prompt-head"><h3>Auftrag zum Kopieren</h3><button id="copy-prompt" type="button" hidden>Auftrag kopieren</button></div>
+          <p id="prompt">Lies CLAUDE.md, README.md und README.json in diesem Ordner. Baue die dort beschriebene Grundaufgabe vollständig. Verwende die vorhandene Oberfläche und die mitgelieferten Aufgabenregeln. Prüfe die Abnahmekriterien und Tests, behebe Fehler und starte die lokale Vorschau. Nenne mir die genaue URL und erkläre das Ergebnis kurz ohne Fachjargon.</p>
+          <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+        </div>
+        <details><summary>Manuell starten und bei Problemen nachsehen</summary><div class="details-content">
+          <p>Voraussetzung sind Node.js 24 LTS mit npm und ein eingerichteter Claude-Code-Zugang. Für das erste Installieren braucht ihr Internet. Die fertigen Basis-Tools benötigen keine KI-API und keine Anmeldung.</p>
+          <p><strong>Windows:</strong> ZIP mit „Alle extrahieren“ entpacken und im Projektordner „Im Terminal öffnen“ wählen. <strong>Mac:</strong> Im Terminal <code>cd </code> tippen, den entpackten Ordner hineinziehen und Enter drücken.</p>
+          <p>Diese Befehle einzeln im normalen Terminal ausführen:</p><pre><code>npm ci
+npm run dev</code></pre>
+          <p>Die angezeigte lokale Adresse im Browser öffnen. Das Terminal muss dabei offen bleiben. Für Claude ein zweites Terminal im selben Ordner öffnen. Mit Strg+C stoppt ihr die Vorschau.</p>
+          <p><strong>Die Fachfunktion ist noch gesperrt?</strong> Das ist im Gerüst beabsichtigt. Claude ergänzt die Aufgabe. Der Befehl <code>npm run test:ziel</code> schlägt zunächst absichtlich fehl und wird erst mit einer funktionierenden Lösung grün.</p>
+          <p>Bei einer Fehlermeldung zuerst den richtigen Projektordner prüfen. Dann Claude sagen: „Das sollte passieren: … Tatsächlich passiert: … Hier ist die genaue Meldung.“ Bei fehlender Installation oder gesperrtem Zugriff helfen Manuel, Michael oder die IT.</p>
+        </div></details>
+      </section>
+
+      <section id="zusatzaufgabe" class="bonus" aria-labelledby="bonus-heading">
+        <p class="eyebrow">Wenn der Produktvergleich schon funktioniert</p><h2 id="bonus-heading">Zusatzaufgabe: ein Produktberater</h2>
+        <p>Lasst das Tool drei Fragen stellen: <strong>Was möchtest du machen? Welche Stromversorgung brauchst du? Wie hoch ist dein Budget?</strong> Anschließend soll es bis zu drei passende Produkte aus der vorhandenen Liste auswählen und die Auswahl mit klaren Regeln begründen.</p>
+        <p>Auch fehlende Angaben und eine Suche ohne Treffer sollen verständlich enden. Die vollständige Aufgabe und die Prüffälle liegen im Produktvergleich-ZIP in <code>BONUS.md</code> und <code>BONUS.json</code>. Dafür sind keine externen Systeme nötig.</p>
+        <details><summary>Auftrag und Beispielprüfungen anzeigen</summary><div class="details-content">
+          <p class="bonus-prompt">Lies BONUS.md und BONUS.json. Erweitere meinen fertigen Produktvergleich um den beschriebenen Produktberater. Nutze nur den vorhandenen Katalog und klare Filterregeln. Implementiere die Prüffälle, teste sie und erkläre die Ergebnisse.</p>
+          <ul><li>Schleifen, Stromversorgung egal, bis 150 Euro: DEMO-B, DEMO-A und DEMO-C, in dieser Reihenfolge.</li><li>Bohren, Kabel, bis 100 Euro: genau DEMO-E.</li><li>Sägen, Akku, bis 200 Euro: kein passendes Produkt.</li></ul>
+          <p>Die Empfehlungen nutzen ausschließlich die erfundenen Übungsdaten. Ein Preis genau am Budget wird eingeschlossen; fehlende Preise werden ausgeschlossen. Ein einzelner Treffer muss ebenfalls angezeigt und exportiert werden können.</p>
+        </div></details>
+      </section>
+    </main>
+
+    <footer><div><strong>Manuel Fuß</strong><span>Festool KI-Hackathon · September 2026</span></div><nav aria-label="Weitere Links"><a href="https://github.com/manuelfussTC/festool-ecommerce-starterkits">Code & Referenzlösungen auf GitHub</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></nav></footer>
+  </div>
+</body>
+</html>

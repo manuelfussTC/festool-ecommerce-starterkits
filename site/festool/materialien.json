@@ -1,0 +1,33 @@
+{
+  "event": "Festool KI-Hackathon",
+  "date": "2026-09-15",
+  "url": "https://manuel-fuss.de/festool",
+  "presentation_version": "v6",
+  "files": [
+    {
+      "file": "downloads/festool-hackathon-praesentation.pdf",
+      "bytes": 639953,
+      "sha256": "6f6f9cb2dbd7d0cfcad49c87c84b54a0f42b8f4f689375c3fd6c349cfdf884ff"
+    },
+    {
+      "file": "downloads/produktdaten-check.zip",
+      "bytes": 32717,
+      "sha256": "a02f1a95810a6a03cca12f6ad1956205a275fb4f63d4d67138165044a3d23617"
+    },
+    {
+      "file": "downloads/produktvergleich.zip",
+      "bytes": 36939,
+      "sha256": "c35631dc38402d67a2250fb3d5b02bb3fbf8b41e58c0e90b86efbd965a96ecd3"
+    },
+    {
+      "file": "downloads/shop-reporting.zip",
+      "bytes": 34389,
+      "sha256": "18090e24553a6967c9782cda1bb38948dd534ca5d4f83369b8c3e5dfec721764"
+    },
+    {
+      "file": "downloads/spielstart.zip",
+      "bytes": 21908,
+      "sha256": "7b32b62e7e9dab5e00011fe4a227740dac75e9a62beb67e2182739086a9de3e4"
+    }
+  ]
+}

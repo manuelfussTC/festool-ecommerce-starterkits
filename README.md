@@ -1,5 +1,7 @@
 # E-Commerce Starter-Kits
 
+**Für Teilnehmer: [manuel-fuss.de/festool](https://manuel-fuss.de/festool)** - Präsentation als PDF, direkte ZIP-Downloads, Startanleitung und Zusatzaufgabe.
+
 Drei kleine Werkzeuge zum Selberbauen mit Claude Code. Für den Festool-Workshop am 15. September 2026, vorbereitet von Manuel Fuß.
 
 **Jedes Kit funktioniert für sich.** Du lädst ein ZIP herunter, entpackst es und gibst Claude den vorbereiteten Auftrag. Keine Shop-, PIM-, ERP- oder Datenbankanbindung. Die fertigen Apps brauchen keinen KI-Schlüssel und keinen Login. Alle Beispieldaten sind frei erfunden.
