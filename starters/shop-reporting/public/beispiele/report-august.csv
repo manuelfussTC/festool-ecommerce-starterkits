@@ -1,0 +1,6 @@
+artikelnummer;name;kategorie;besuche;bestellungen;umsatz_eur
+ DEMO-A;Schleifer Alpha;Schleifer;900;45;4500
+ DEMO-B;Schleifer Beta;Schleifer;600;18;2160
+ DEMO-C;Säge Gamma;Säge;0;0;0
+ DEMO-D;Bohrer Delta;Bohrer;200;2;200
+ DEMO-E;Säge Epsilon;Säge;500;30;2980

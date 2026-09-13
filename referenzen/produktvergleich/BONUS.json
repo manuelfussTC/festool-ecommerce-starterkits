@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "id": "produktberater",
+  "base_kit": "produktvergleich",
+  "status": "optional-not-implemented",
+  "title": "Ein Produktberater mit drei Fragen",
+  "estimated_minutes": "60–90 (Richtwert)",
+  "start_prompt": "Lies BONUS.md und BONUS.json. Erweitere den fertigen Produktvergleich um den beschriebenen Produktberater mit drei Fragen. Nutze die vorhandenen Katalogdaten, explizite Filterregeln und verständliche Gründe. Baue keine KI-API oder externe Anbindung ein. Implementiere automatisierte Tests für alle Bonus-Szenarien und teste anschließend im Browser.",
+  "questions": [
+    {
+      "id": "anwendung",
+      "label": "Was möchtest Du machen?",
+      "options": [
+        "schleifen",
+        "saegen",
+        "bohren"
+      ],
+      "rule": "Exakter Treffer in anwendung; fehlende Angabe schließt aus."
+    },
+    {
+      "id": "stromversorgung",
+      "label": "Welche Stromversorgung brauchst Du?",
+      "options": [
+        "egal",
+        "akku",
+        "kabel"
+      ],
+      "rule": "Bei egal kein Filter. Sonst exakter Treffer; fehlende Angabe schließt aus."
+    },
+    {
+      "id": "budget",
+      "label": "Wie hoch ist Dein Budget in Euro?",
+      "type": "number",
+      "rule": "Nicht negative Zahl, maximal zwei Nachkommastellen. preis_eur <= budget; fehlender Preis schließt aus."
+    }
+  ],
+  "rules": [
+    "Alle drei gewählten Bedingungen müssen erfüllt sein.",
+    "Nach aufsteigendem Preis sortieren; bei gleichem Preis nach Artikelnummer. Höchstens drei Treffer zeigen.",
+    "Für jeden Treffer die drei erfüllten Regeln anhand der tatsächlichen CSV-Werte erklären. Keine Eignung oder Produkteigenschaft erfinden.",
+    "Fehlendes Gewicht schließt nicht aus; in der Anzeige bleibt es „Keine Angabe“. Anwendung, gewählte Stromversorgung und Preis müssen die Regeln erfüllen.",
+    "Bei keinem Treffer „Kein passendes Produkt in diesem Katalog“ mit Hinweis auf geänderte Suchkriterien zeigen. Keine automatische Lockerung der Regeln.",
+    "Bei einem Treffer eine Ergebnisansicht mit Export anbieten; bei zwei oder drei Treffern zusätzlich den vorhandenen Vergleich verwenden.",
+    "Fragen, Treffer und Begründung exportieren. Grundaufgabe und deren Tests müssen weiterhin funktionieren."
+  ],
+  "scenarios": [
+    {
+      "input": {
+        "anwendung": "schleifen",
+        "stromversorgung": "egal",
+        "budget": 150
+      },
+      "expected_ids": [
+        "DEMO-B",
+        "DEMO-A",
+        "DEMO-C"
+      ]
+    },
+    {
+      "input": {
+        "anwendung": "schleifen",
+        "stromversorgung": "akku",
+        "budget": 150
+      },
+      "expected_ids": [
+        "DEMO-A",
+        "DEMO-C"
+      ]
+    },
+    {
+      "input": {
+        "anwendung": "bohren",
+        "stromversorgung": "kabel",
+        "budget": 100
+      },
+      "expected_ids": [
+        "DEMO-E"
+      ]
+    },
+    {
+      "input": {
+        "anwendung": "saegen",
+        "stromversorgung": "akku",
+        "budget": 200
+      },
+      "expected_ids": []
+    },
+    {
+      "input": {
+        "anwendung": "schleifen",
+        "stromversorgung": "akku",
+        "budget": -1
+      },
+      "expected_error": "Budget muss nicht negativ sein."
+    }
+  ],
+  "additional_checks": [
+    "Preis exakt am Budget einschließen. Fehlende Preise ausschließen.",
+    "Neuer Katalog mit passenden Spalten funktioniert ohne feste Produktnamen oder IDs.",
+    "Bei vier passenden Produkten nur die ersten drei gemäß Sortierung zeigen.",
+    "Falsche, leere oder unvollständige Eingaben verständlich erklären."
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "title": "E-Commerce Starter-Kits",
+  "repository": "https://github.com/manuelfussTC/festool-ecommerce-starterkits",
+  "language": "de-DE",
+  "status": "ready-for-workshop",
+  "entrypoint": "Choose exactly one folder in starters/ and read its CLAUDE.md and README.json.",
+  "runtime": "Node.js 24 LTS recommended; minimum 22.12",
+  "commands": {
+    "install": "npm ci",
+    "start": "npm run dev"
+  },
+  "projects": [
+    {
+      "id": "produktdaten-check",
+      "path": "starters/produktdaten-check",
+      "kind": "starter",
+      "spec": "starters/produktdaten-check/README.json"
+    },
+    {
+      "id": "produktvergleich",
+      "path": "starters/produktvergleich",
+      "kind": "starter",
+      "spec": "starters/produktvergleich/README.json"
+    },
+    {
+      "id": "shop-reporting",
+      "path": "starters/shop-reporting",
+      "kind": "starter",
+      "spec": "starters/shop-reporting/README.json"
+    },
+    {
+      "id": "spielstart",
+      "path": "starters/spielstart",
+      "kind": "starter",
+      "spec": "starters/spielstart/README.json"
+    },
+    {
+      "id": "produktdaten-check",
+      "path": "referenzen/produktdaten-check",
+      "kind": "reference",
+      "spec": "referenzen/produktdaten-check/README.json"
+    },
+    {
+      "id": "produktvergleich",
+      "path": "referenzen/produktvergleich",
+      "kind": "reference",
+      "spec": "referenzen/produktvergleich/README.json"
+    },
+    {
+      "id": "shop-reporting",
+      "path": "referenzen/shop-reporting",
+      "kind": "reference",
+      "spec": "referenzen/shop-reporting/README.json"
+    }
+  ],
+  "constraints": [
+    "Each project is standalone and has its own lockfile.",
+    "All provided data is synthetic.",
+    "No runtime API credentials, account or company integration required."
+  ],
+  "downloads": [
+    {
+      "id": "produktdaten-check",
+      "url": "https://github.com/manuelfussTC/festool-ecommerce-starterkits/releases/latest/download/produktdaten-check.zip"
+    },
+    {
+      "id": "produktvergleich",
+      "url": "https://github.com/manuelfussTC/festool-ecommerce-starterkits/releases/latest/download/produktvergleich.zip"
+    },
+    {
+      "id": "shop-reporting",
+      "url": "https://github.com/manuelfussTC/festool-ecommerce-starterkits/releases/latest/download/shop-reporting.zip"
+    },
+    {
+      "id": "spielstart",
+      "url": "https://github.com/manuelfussTC/festool-ecommerce-starterkits/releases/latest/download/spielstart.zip"
+    },
+    {
+      "id": "referenzloesungen",
+      "url": "https://github.com/manuelfussTC/festool-ecommerce-starterkits/releases/latest/download/referenzloesungen.zip"
+    }
+  ]
+}

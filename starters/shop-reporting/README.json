@@ -1,0 +1,98 @@
+{
+  "$schema": "./README.schema.json",
+  "schema_version": 1,
+  "id": "shop-reporting",
+  "title": "Shop-Reporting",
+  "summary": "Produkte mit vielen Besuchen und wenigen Bestellungen in einer CSV erkennen.",
+  "kind": "starter",
+  "status": "scaffold",
+  "language": "de-DE",
+  "estimated_minutes": {
+    "minimum": 30,
+    "maximum": 45,
+    "note": "Richtwert für die Grundaufgabe mit vorbereiteter Umgebung; keine Zeitgarantie."
+  },
+  "start_prompt": "Lies zuerst CLAUDE.md, README.md und README.json in diesem Ordner. Baue die Grundaufgabe „Shop-Reporting“ vollständig. Implementiere die Fachlogik in src/aufgabe.ts und verbinde sie mit der vorhandenen Oberfläche. Nutze die mitgelieferten Beispieldaten und arbeite ohne externe Dienste, Anmeldung oder API-Schlüssel. Arbeite die Abnahmekriterien ab und lasse npm test, npm run test:ziel und npm run build erfolgreich durchlaufen. Behebe dabei gefundene Fehler. Starte anschließend die lokale Vorschau und nenne mir die genaue URL. Erkläre mir das Ergebnis kurz ohne Fachjargon. Frag nur nach, wenn dir eine notwendige Entscheidung fehlt. Zusatzaufgaben baust du erst, wenn ich sie ausdrücklich auswähle.",
+  "commands": {
+    "install": "npm ci",
+    "start": "npm run dev",
+    "build": "npm run build",
+    "baseline_test": "npm test",
+    "acceptance_test": "npm run test:ziel"
+  },
+  "data": {
+    "source": "synthetic",
+    "required_columns": [
+      "artikelnummer",
+      "name",
+      "kategorie",
+      "besuche",
+      "bestellungen",
+      "umsatz_eur"
+    ],
+    "fields": {
+      "artikelnummer": "Pflichtfeld und eindeutig. Eine Zeile pro Artikel und ausgewähltem Zeitraum.",
+      "name": "Pflichtfeld: Produktname.",
+      "kategorie": "Pflichtfeld; Filter verwendet exakten Wert.",
+      "besuche": "Nicht negative ganze Zahl ohne Tausendertrennzeichen.",
+      "bestellungen": "Nicht negative ganze Zahl. Gezählt werden Bestellungen, die diesen Artikel enthalten.",
+      "umsatz_eur": "Nicht negative Dezimalzahl ohne Tausendertrennzeichen. Fiktiver Artikelumsatz in EUR; Punkt oder Komma."
+    },
+    "samples": [
+      "report-juli.csv",
+      "report-august.csv"
+    ],
+    "folder": "public/beispiele/",
+    "max_file_bytes": 2000000,
+    "max_records": 5000
+  },
+  "task": {
+    "implemented": [
+      "Startbare React-Oberfläche",
+      "CSV-Import mit Fehlermeldungen und Beispieldateien",
+      "Datenvorschau und Export-Helfer",
+      "Bedienelemente für die Fachaufgabe"
+    ],
+    "todo": [
+      "analyzeReport in src/aufgabe.ts implementieren.",
+      "WORKSHOP_READY erst nach erfolgreicher Umsetzung auf true setzen.",
+      "Alle Abnahmetests bestehen und die Oberfläche einschließlich Export manuell testen."
+    ],
+    "rules": [
+      "Bestellquote = bestellungen / besuche × 100. Bei 0 Besuchen null/„Nicht berechenbar“, niemals Infinity oder NaN.",
+      "Bestellquote ist eine Kennzahl dieser CSV, keine allgemeine Shop-Conversion-Rate. Mehrere Bestellungen pro Besuch sind möglich; Werte über 100 % nicht abschneiden.",
+      "Auffällig: besuche >= Mindestbesuche UND berechenbare Bestellquote < Grenzwert. Standard: 500 Besuche und 2 %.",
+      "Filter für Suche und Kategorie gelten auch für Summen, auffällige Zeilen und Export.",
+      "Gesamtquote = Summe Bestellungen / Summe Besuche × 100; kein Durchschnitt der Einzelquoten. Bei Gesamtsumme 0 Besuchen ebenfalls null.",
+      "Einen Zeitraum pro Import anzeigen; eine neue Datei ersetzt die vorherige. Umsatz ist kein Gewinn und erklärt keine Ursache."
+    ],
+    "acceptance": [
+      "Juli ohne Filter: 2.600 Besuche, 83 Bestellungen, 8.440 EUR und rund 3,19 % Gesamtquote.",
+      "Standardgrenzen im Juli: nur DEMO-B auffällig (800 Besuche, 8 Bestellungen, 1 %).",
+      "Juli Kategorie Schleifer: 1.800 Besuche, 48 Bestellungen und 2,67 % Quote.",
+      "August ohne Filter: 2.200 Besuche und 95 Bestellungen. DEMO-C mit 0 Besuchen hat keine berechenbare Quote."
+    ],
+    "extensions": [
+      "Vorherigen Monat getrennt laden und Differenzen zeigen.",
+      "Sortierung nach Quote, Besuchen oder Umsatz ergänzen."
+    ]
+  },
+  "constraints": [
+    "Jedes Kit muss einzeln aus seinem Ordner oder ZIP laufen. Keine Imports aus Nachbarprojekten.",
+    "Keine Shop-, PIM-, ERP-, Mail-, Datenbank- oder KI-API-Anbindung. Keine Anmeldung und keine geheimen Schlüssel.",
+    "Keine neuen Abhängigkeiten ohne konkreten Bedarf. Vorhandene React/Vite/TypeScript-Struktur verwenden.",
+    "Eingabedaten bleiben während der App-Nutzung im Browser. Nur Beispieldateien vom lokalen Server laden; keine Telemetrie.",
+    "Die Beispieldaten sind frei erfunden und dürfen nicht als echte Festool-Daten dargestellt werden.",
+    "Abnahmetests nicht löschen, abschwächen oder auf feste Demo-Ausgaben umstellen. Ergebnisse aus Eingabedaten berechnen.",
+    "Bei neuen Anforderungen README.md und README.json gemeinsam aktualisieren."
+  ],
+  "files": {
+    "instructions": "CLAUDE.md",
+    "human_readme": "README.md",
+    "data_contract": "DATEN.md",
+    "task_implementation": "src/aufgabe.ts",
+    "ui": "src/App.tsx",
+    "csv": "src/csv.ts",
+    "acceptance_tests": "tests/ziel.test.ts"
+  }
+}

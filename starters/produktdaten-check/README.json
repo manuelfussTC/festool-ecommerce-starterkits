@@ -1,0 +1,93 @@
+{
+  "$schema": "./README.schema.json",
+  "schema_version": 1,
+  "id": "produktdaten-check",
+  "title": "Produktdaten-Check",
+  "summary": "Eine Produktliste prüfen und eine verständliche Fehlerliste herunterladen.",
+  "kind": "starter",
+  "status": "scaffold",
+  "language": "de-DE",
+  "estimated_minutes": {
+    "minimum": 30,
+    "maximum": 45,
+    "note": "Richtwert für die Grundaufgabe mit vorbereiteter Umgebung; keine Zeitgarantie."
+  },
+  "start_prompt": "Lies zuerst CLAUDE.md, README.md und README.json in diesem Ordner. Baue die Grundaufgabe „Produktdaten-Check“ vollständig. Implementiere die Fachlogik in src/aufgabe.ts und verbinde sie mit der vorhandenen Oberfläche. Nutze die mitgelieferten Beispieldaten und arbeite ohne externe Dienste, Anmeldung oder API-Schlüssel. Arbeite die Abnahmekriterien ab und lasse npm test, npm run test:ziel und npm run build erfolgreich durchlaufen. Behebe dabei gefundene Fehler. Starte anschließend die lokale Vorschau und nenne mir die genaue URL. Erkläre mir das Ergebnis kurz ohne Fachjargon. Frag nur nach, wenn dir eine notwendige Entscheidung fehlt. Zusatzaufgaben baust du erst, wenn ich sie ausdrücklich auswähle.",
+  "commands": {
+    "install": "npm ci",
+    "start": "npm run dev",
+    "build": "npm run build",
+    "baseline_test": "npm test",
+    "acceptance_test": "npm run test:ziel"
+  },
+  "data": {
+    "source": "synthetic",
+    "required_columns": [
+      "artikelnummer",
+      "name",
+      "beschreibung",
+      "lieferumfang",
+      "bildreferenz"
+    ],
+    "fields": {
+      "artikelnummer": "Pflichtfeld; Leerzeichen am Rand ignorieren. Doppelte Werte exakt und unabhängig von Groß-/Kleinschreibung prüfen.",
+      "name": "Pflichtfeld: Produktname.",
+      "beschreibung": "Pflichtfeld: kurze Beschreibung.",
+      "lieferumfang": "Pflichtfeld: enthaltene Teile.",
+      "bildreferenz": "Pflichtfeld: Dateiname oder Textreferenz. Nur auf Vorhandensein prüfen, keine URL aufrufen."
+    },
+    "samples": [
+      "produkte-mit-fehlern.csv",
+      "produkte-sauber.csv"
+    ],
+    "folder": "public/beispiele/",
+    "max_file_bytes": 2000000,
+    "max_records": 5000
+  },
+  "task": {
+    "implemented": [
+      "Startbare React-Oberfläche",
+      "CSV-Import mit Fehlermeldungen und Beispieldateien",
+      "Datenvorschau und Export-Helfer",
+      "Bedienelemente für die Fachaufgabe"
+    ],
+    "todo": [
+      "checkProducts in src/aufgabe.ts implementieren.",
+      "WORKSHOP_READY erst nach erfolgreicher Umsetzung auf true setzen.",
+      "Alle Abnahmetests bestehen und die Oberfläche einschließlich Export manuell testen."
+    ],
+    "rules": [
+      "Jedes leere Pflichtfeld erzeugt genau einen Eintrag mit Datensatznummer, Artikelnummer, Feld und Grund.",
+      "Bei doppelten Artikelnummern jede betroffene Zeile zusätzlich markieren; leere Nummern nicht als Duplikat zählen.",
+      "Datensatz 1 ist die erste Datenzeile nach der Kopfzeile. Mehrzeilige CSV-Felder zählen als ein Datensatz.",
+      "Die Eingabedaten niemals verändern. Saubere Dateien ausdrücklich mit null Problemen anzeigen."
+    ],
+    "acceptance": [
+      "produkte-mit-fehlern.csv: 7 Probleme in 4 von 5 Datensätzen.",
+      "produkte-sauber.csv: 0 Probleme in 3 Datensätzen.",
+      "CSV-Export enthält alle angezeigten Probleme und verständliche Spaltennamen."
+    ],
+    "extensions": [
+      "Nur ein bestimmtes Pflichtfeld prüfen lassen.",
+      "Fehler nach Feld filtern oder eine korrigierte Kopie exportieren."
+    ]
+  },
+  "constraints": [
+    "Jedes Kit muss einzeln aus seinem Ordner oder ZIP laufen. Keine Imports aus Nachbarprojekten.",
+    "Keine Shop-, PIM-, ERP-, Mail-, Datenbank- oder KI-API-Anbindung. Keine Anmeldung und keine geheimen Schlüssel.",
+    "Keine neuen Abhängigkeiten ohne konkreten Bedarf. Vorhandene React/Vite/TypeScript-Struktur verwenden.",
+    "Eingabedaten bleiben während der App-Nutzung im Browser. Nur Beispieldateien vom lokalen Server laden; keine Telemetrie.",
+    "Die Beispieldaten sind frei erfunden und dürfen nicht als echte Festool-Daten dargestellt werden.",
+    "Abnahmetests nicht löschen, abschwächen oder auf feste Demo-Ausgaben umstellen. Ergebnisse aus Eingabedaten berechnen.",
+    "Bei neuen Anforderungen README.md und README.json gemeinsam aktualisieren."
+  ],
+  "files": {
+    "instructions": "CLAUDE.md",
+    "human_readme": "README.md",
+    "data_contract": "DATEN.md",
+    "task_implementation": "src/aufgabe.ts",
+    "ui": "src/App.tsx",
+    "csv": "src/csv.ts",
+    "acceptance_tests": "tests/ziel.test.ts"
+  }
+}

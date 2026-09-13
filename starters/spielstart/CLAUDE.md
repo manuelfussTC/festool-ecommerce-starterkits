@@ -1,0 +1,7 @@
+# Spielstart: Arbeitsauftrag
+
+Lies zuerst README.md und README.json. Wenn der Mensch „Bau das“ sagt, gilt dieser Auftrag:
+
+Lies zuerst CLAUDE.md, README.md und README.json in diesem Ordner. Baue das Spiel Schraubenfang vollständig nach der beschriebenen Aufgabe. Nutze die mitgelieferten Beispieldaten und arbeite ohne externe Dienste, Anmeldung oder API-Schlüssel. Prüfe die Spielregeln im Browser. Behebe dabei gefundene Fehler. Starte anschließend die lokale Vorschau und nenne mir die genaue URL. Erkläre mir das Ergebnis kurz ohne Fachjargon. Frag nur nach, wenn dir eine notwendige Entscheidung fehlt. Zusatzaufgaben baust du erst, wenn ich sie ausdrücklich auswähle.
+
+Arbeite nur in diesem Projekt, auf Deutsch und ohne Fachjargon in der Übergabe. Nutze die vorhandene React/Vite-Struktur. Keine API, Anmeldung oder fremden Assets. Prüfe die Umgebung und installiere mit npm ci. Implementiere die Regeln aus README.json. Ersetze den ausdrücklich markierten Platzhalter in tests/ziel.test.ts durch echte Tests für Punkte, Rundenende und Neustart. Lasse npm test, npm run test:ziel und npm run build erfolgreich durchlaufen. Probiere Steuerung, 30-Sekunden-Ende und mehrere Neustarts im Browser aus. Behaupte keinen bestandenen Browser-Test, den Du nicht ausgeführt hast. Starte npm run dev und nenne die tatsächliche URL. Optionale Extras nur nach neuem Auftrag. Nichts ohne ausdrücklichen Auftrag veröffentlichen.

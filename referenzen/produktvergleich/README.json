@@ -1,0 +1,98 @@
+{
+  "$schema": "./README.schema.json",
+  "schema_version": 1,
+  "id": "produktvergleich",
+  "title": "Produktvergleich",
+  "summary": "Zwei oder drei Produkte nebeneinander ansehen und ihre Unterschiede erkennen.",
+  "kind": "reference",
+  "status": "reference-complete",
+  "language": "de-DE",
+  "estimated_minutes": {
+    "minimum": 30,
+    "maximum": 45,
+    "note": "Richtwert für die Grundaufgabe mit vorbereiteter Umgebung; keine Zeitgarantie."
+  },
+  "start_prompt": "Lies CLAUDE.md und README.json. Dies ist die fertige Referenzlösung. Installiere mit npm ci, prüfe npm test, npm run test:ziel und npm run build und starte npm run dev. Nenne mir die URL. Ändere keine Fachfunktion ohne neuen Auftrag.",
+  "commands": {
+    "install": "npm ci",
+    "start": "npm run dev",
+    "build": "npm run build",
+    "baseline_test": "npm test",
+    "acceptance_test": "npm run test:ziel"
+  },
+  "data": {
+    "source": "synthetic",
+    "required_columns": [
+      "artikelnummer",
+      "name",
+      "kategorie",
+      "anwendung",
+      "stromversorgung",
+      "gewicht_kg",
+      "preis_eur"
+    ],
+    "fields": {
+      "artikelnummer": "Pflichtfeld und eindeutig (exakt, Groß-/Kleinschreibung beachten).",
+      "name": "Pflichtfeld: Produktname.",
+      "kategorie": "Kategorie als Text; darf fehlen.",
+      "anwendung": "Für die Bonusaufgabe: schleifen, saegen oder bohren; darf fehlen.",
+      "stromversorgung": "akku oder kabel; darf fehlen.",
+      "gewicht_kg": "Nicht negative Dezimalzahl ohne Tausendertrennzeichen; höchstens zwei Nachkommastellen, Punkt oder Komma. Leer bedeutet unbekannt.",
+      "preis_eur": "Fiktiver Übungspreis in Euro; gleiche Zahlenregeln wie Gewicht. Leer bedeutet unbekannt."
+    },
+    "samples": [
+      "produktkatalog.csv",
+      "produktkatalog-zwei.csv"
+    ],
+    "folder": "public/beispiele/",
+    "max_file_bytes": 2000000,
+    "max_records": 5000
+  },
+  "task": {
+    "implemented": [
+      "Startbare React-Oberfläche",
+      "CSV-Import mit Fehlermeldungen und Beispieldateien",
+      "Datenvorschau und Export-Helfer",
+      "Bedienelemente für die Fachaufgabe",
+      "compareProducts vollständig implementiert",
+      "Fachliche Abnahmetests erfolgreich ausgelegt"
+    ],
+    "todo": [
+      "Grundaufgabe ist fertig. Nur ausdrücklich gewünschte Erweiterungen umsetzen."
+    ],
+    "rules": [
+      "Genau 2 oder 3 verschiedene Produkte vergleichen; Auswahl über Artikelnummer.",
+      "Zeilen für Kategorie, Anwendung, Stromversorgung, Gewicht und Preis anzeigen; Produktnamen stehen im Tabellenkopf.",
+      "Fehlende Werte als „Keine Angabe“ zeigen. Zahlen vor dem Vergleich normalisieren: 1,50 und 1.5 sind gleich.",
+      "Unterschiedlich bedeutet: mindestens zwei normalisierte Werte sind verschieden. Zwei fehlende Werte gelten als gleich, fehlend gegen gefüllt als verschieden.",
+      "CSV-Export enthält genau die gewählten Produkte und die angezeigten Merkmale."
+    ],
+    "acceptance": [
+      "DEMO-A und DEMO-B: Anwendung und Kategorie gleich, Stromversorgung/Gewicht/Preis unterschiedlich.",
+      "DEMO-A und DEMO-C: fehlendes Gewicht sichtbar; Preis 149,00 und 149.0 gilt als gleich.",
+      "Mit produktkatalog-zwei.csv funktioniert die Auswahl ohne Änderungen am Code."
+    ],
+    "extensions": [
+      "Bonus: Produktberater mit drei Fragen (BONUS.md).",
+      "Nur Unterschiede anzeigen oder Vergleich drucken."
+    ]
+  },
+  "constraints": [
+    "Jedes Kit muss einzeln aus seinem Ordner oder ZIP laufen. Keine Imports aus Nachbarprojekten.",
+    "Keine Shop-, PIM-, ERP-, Mail-, Datenbank- oder KI-API-Anbindung. Keine Anmeldung und keine geheimen Schlüssel.",
+    "Keine neuen Abhängigkeiten ohne konkreten Bedarf. Vorhandene React/Vite/TypeScript-Struktur verwenden.",
+    "Eingabedaten bleiben während der App-Nutzung im Browser. Nur Beispieldateien vom lokalen Server laden; keine Telemetrie.",
+    "Die Beispieldaten sind frei erfunden und dürfen nicht als echte Festool-Daten dargestellt werden.",
+    "Abnahmetests nicht löschen, abschwächen oder auf feste Demo-Ausgaben umstellen. Ergebnisse aus Eingabedaten berechnen.",
+    "Bei neuen Anforderungen README.md und README.json gemeinsam aktualisieren."
+  ],
+  "files": {
+    "instructions": "CLAUDE.md",
+    "human_readme": "README.md",
+    "data_contract": "DATEN.md",
+    "task_implementation": "src/aufgabe.ts",
+    "ui": "src/App.tsx",
+    "csv": "src/csv.ts",
+    "acceptance_tests": "tests/ziel.test.ts"
+  }
+}

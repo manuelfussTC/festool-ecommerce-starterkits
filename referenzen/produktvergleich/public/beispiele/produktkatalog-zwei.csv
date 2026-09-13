@@ -1,0 +1,4 @@
+artikelnummer;name;kategorie;anwendung;stromversorgung;gewicht_kg;preis_eur
+ TEST-1;Testschleifer Eins;Schleifer;schleifen;kabel;2;99
+ TEST-2;Testsäge Zwei;Säge;saegen;akku;3;219
+ TEST-3;Testgerät Drei;;bohren;akku;1,4;

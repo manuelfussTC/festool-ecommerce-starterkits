@@ -1,0 +1,6 @@
+artikelnummer;name;beschreibung;lieferumfang;bildreferenz
+ DEMO-100;Werkzeug Alpha;Handliches Beispielwerkzeug;Gerät und Koffer;alpha.jpg
+ DEMO-200;Werkzeug Beta;;Gerät und Kabel;beta.jpg
+ DEMO-300;Werkzeug Gamma;Für die Übung;;
+ demo-200;Werkzeug Delta;Anderes Beispiel;Gerät;delta.jpg
+ ;Werkzeug Epsilon;;Gerät;epsilon.jpg

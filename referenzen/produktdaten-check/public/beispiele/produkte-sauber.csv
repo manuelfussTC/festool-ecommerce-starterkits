@@ -1,0 +1,4 @@
+artikelnummer;name;beschreibung;lieferumfang;bildreferenz
+ TEST-01;Gerät Eins;Für einen zweiten Versuch;Gerät und Koffer;eins.jpg
+ TEST-02;Gerät Zwei;"Beschreibung mit; Semikolon";Gerät und Kabel;zwei.jpg
+ TEST-03;Gerät Drei;Vollständige Angaben;Gerät;drei.jpg

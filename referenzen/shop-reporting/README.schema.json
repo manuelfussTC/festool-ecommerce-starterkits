@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workshop starter contract v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "kind",
+    "title",
+    "summary",
+    "status",
+    "start_prompt",
+    "commands",
+    "data",
+    "task",
+    "constraints",
+    "files"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "starter",
+        "reference"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "scaffold",
+        "reference-complete"
+      ]
+    },
+    "start_prompt": {
+      "type": "string"
+    },
+    "commands": {
+      "type": "object",
+      "required": [
+        "install",
+        "start",
+        "build",
+        "baseline_test",
+        "acceptance_test"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "source",
+        "required_columns",
+        "fields",
+        "samples"
+      ],
+      "properties": {
+        "source": {
+          "const": "synthetic"
+        },
+        "required_columns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fields": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "samples": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": [
+        "implemented",
+        "todo",
+        "rules",
+        "acceptance",
+        "extensions"
+      ],
+      "properties": {
+        "implemented": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "todo": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acceptance": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

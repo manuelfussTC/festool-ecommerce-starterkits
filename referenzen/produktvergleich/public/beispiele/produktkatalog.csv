@@ -1,0 +1,7 @@
+artikelnummer;name;kategorie;anwendung;stromversorgung;gewicht_kg;preis_eur
+ DEMO-A;Schleifer Alpha;Schleifer;schleifen;akku;1,5;149,00
+ DEMO-B;Schleifer Beta;Schleifer;schleifen;kabel;2.1;119
+ DEMO-C;Schleifer Gamma;Schleifer;schleifen;akku;;149.0
+ DEMO-D;Säge Delta;Säge;saegen;akku;3.2;249
+ DEMO-E;Bohrer Epsilon;Bohrer;bohren;kabel;1.8;89
+ DEMO-F;Bohrer Zeta;Bohrer;bohren;akku;1.2;179

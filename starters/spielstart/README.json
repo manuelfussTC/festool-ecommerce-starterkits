@@ -1,0 +1,63 @@
+{
+  "$schema": "./README.schema.json",
+  "schema_version": 1,
+  "id": "spielstart",
+  "title": "Spielstart",
+  "summary": "In einer halben Stunde ein kleines Spiel mit Claude bauen.",
+  "kind": "starter",
+  "status": "scaffold",
+  "language": "de-DE",
+  "start_prompt": "Lies zuerst CLAUDE.md, README.md und README.json in diesem Ordner. Baue das Spiel Schraubenfang vollständig nach der beschriebenen Aufgabe. Nutze die mitgelieferten Beispieldaten und arbeite ohne externe Dienste, Anmeldung oder API-Schlüssel. Prüfe die Spielregeln im Browser. Behebe dabei gefundene Fehler. Starte anschließend die lokale Vorschau und nenne mir die genaue URL. Erkläre mir das Ergebnis kurz ohne Fachjargon. Frag nur nach, wenn dir eine notwendige Entscheidung fehlt. Zusatzaufgaben baust du erst, wenn ich sie ausdrücklich auswähle.",
+  "commands": {
+    "install": "npm ci",
+    "start": "npm run dev",
+    "build": "npm run build",
+    "baseline_test": "npm test",
+    "acceptance_test": "npm run test:ziel"
+  },
+  "data": {
+    "source": "synthetic",
+    "required_columns": [],
+    "fields": {},
+    "samples": []
+  },
+  "task": {
+    "implemented": [
+      "Startbare React-Oberfläche",
+      "Spielauftrag und Spielregeln",
+      "Basisprüfung"
+    ],
+    "todo": [
+      "Spiellogik und Oberfläche bauen",
+      "Automatische Fachtests für Punkte, Rundenende und Neustart ergänzen",
+      "Im Browser spielen und prüfen"
+    ],
+    "rules": [
+      "Ein Korb bewegt sich mit den Pfeiltasten nach links und rechts und bleibt im Spielfeld.",
+      "Schrauben fallen von oben. Jede gefangene Schraube gibt genau einen Punkt; verpasste Schrauben verschwinden ohne Punkt.",
+      "Eine Runde dauert 30 Sekunden. Danach stoppen Bewegung und Punkte, der Endstand bleibt sichtbar.",
+      "Neustart setzt Punkte und Zeit zurück. Vorherige Timer dürfen nicht weiterlaufen.",
+      "Startseite erklärt Steuerung, Start, Zeit und Punkte. Das Spiel läuft ohne externe Bilder oder Dienste."
+    ],
+    "acceptance": [
+      "Korb lässt sich steuern. Ein Fang gibt genau einen Punkt.",
+      "Nach 30 Sekunden ändert sich der Punktestand nicht mehr.",
+      "Drei Neustarts hintereinander erzeugen jeweils eine frische Runde ohne zusätzliche Timer."
+    ],
+    "extensions": [
+      "Touch-Steuerung ergänzen",
+      "Eigene Spielidee: Reaktionstest, Memory oder Quiz"
+    ]
+  },
+  "constraints": [
+    "Keine Anmeldung, Datenbank, KI-API oder externen Assets.",
+    "Innerhalb dieses eigenständigen Ordners arbeiten.",
+    "Keine Dummy-Tests oder vorgetäuschte erfolgreiche Umsetzung."
+  ],
+  "files": {
+    "ui": "src/App.tsx",
+    "human_readme": "README.md",
+    "instructions": "CLAUDE.md",
+    "acceptance_tests": "tests/ziel.test.ts"
+  }
+}
