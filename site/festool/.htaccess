@@ -10,4 +10,5 @@ Options -Indexes
 </IfModule>
 AddType application/pdf .pdf
 AddType application/zip .zip
+AddType video/mp4 .mp4
 
