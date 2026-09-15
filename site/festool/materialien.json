@@ -2,7 +2,7 @@
   "event": "Festool KI-Hackathon",
   "date": "2026-09-15",
   "url": "https://manuel-fuss.de/festool",
-  "presentation_version": "v7",
+  "presentation_version": "v8",
   "files": [
     {
       "file": "downloads/festool-einstieg.mp4",
@@ -11,8 +11,8 @@
     },
     {
       "file": "downloads/festool-hackathon-praesentation.pdf",
-      "bytes": 697736,
-      "sha256": "a577d41e15592815e0a578e13392e3114fa93d951d5eca795744ea2718765f48"
+      "bytes": 1559990,
+      "sha256": "518283dd78df5dc25444a660afb42324de9357cc3d77bf3161c23ce7a18a68da"
     },
     {
       "file": "downloads/produktdaten-check.zip",
